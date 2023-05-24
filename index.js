@@ -1,7 +1,9 @@
 const express = require('express'),
-  morgan = require('morgan'),
+  morgan = require('morgan'), // import morgan
   fs = require('fs'), // import built in node modules fs and path 
-  path = require('path');
+  path = require('path'),
+  bodyParser = require('body-parser'), // import body-parser
+  uuid = require('uuid'); // import uuid
 
 const app = express();
 // create a write stream (in append mode)
@@ -72,7 +74,7 @@ app.get('/', (req, res) => {
     res.send('But you cannot hide.');
 });
 
-app.use('/documentation', express.static('public'));
+app.use("/", express.static(__dirname + "/public"));
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
