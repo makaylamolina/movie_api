@@ -137,7 +137,7 @@ let movies = [
 ];
 
 // CREATE
-app.put('/users/:id', (req, res) => {
+app.post('/users', (req, res) => {
     const newUser = req.body;
 
     if (newUser.name) {
@@ -150,11 +150,11 @@ app.put('/users/:id', (req, res) => {
 })
 
 // UPDATE
-app.post('/users', (req, res) => {
+app.put('/users/:id', (req, res) => {
     const { id } = req.params;
     const updatedUser = req.body;
 
-    let user = users.find( user => user.ud == id );
+    let user = users.find( user => user.id == id );
 
     if (user) {
         user.name = updatedUser.name;
@@ -172,7 +172,7 @@ app.post('/users/:id/:movieTitle', (req, res) => {
 
     if (user) {
         user.favoriteMovies.push(movieTitle);
-        res.status(200).send(`${movieTitle} has been added to user ${id}'s array`);
+        res.status(200).send(`${movieTitle} has been added to user ${id}'s array.`);
     } else {
         res.status(400).send('no such user')
     }
