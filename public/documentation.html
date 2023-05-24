@@ -6,6 +6,92 @@
         <title>You Can Run</title>
     </head>
     <body>
-        <p>This is a web application for viewing horror movies.</p>
+        <p>This is a web application for viewing horror movies. The user will be able to view information on the directors add favorite movies to their account.</p>
     </body>
+    <table>
+        <thead>
+            <tr>
+                <th>Business Logic</th>
+                <th>URL</th>
+                <th>HTTP Method</th>
+                <th>Query Parameters</th>
+                <th>Request Body Data Format</th>
+                <th>Response Body Data Format</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Allows a user to be created</td>
+                <td>/users</td>
+                <td>POST</td>
+                <td>None</td>
+                <td>A JSON object of the new user, structured like: "Username": "", "id": "", "favoriteMovie": ""</td>
+                <td>A JSON object of the new user added, structured like: "Username": "", "id": "", "favoriteMovie": ""</td>
+            </tr>
+            <tr>
+                <td>Allows a user to change their username</td>
+                <td>/users/:id</td>
+                <td>PUT</td>
+                <td>:id</td>
+                <td>None</td>
+                <td>A JSON object of the user.</td>
+            </tr>
+            <tr>
+                <td>Allows a user to add a movie to their list of favorites.</td>
+                <td>/users/:id/:movieTitle</td>
+                <td>POST</td>
+                <td>:id, :movieTitle</td>
+                <td>None</td>
+                <td>Text confirmation that the movie has been added to their list of favorites.</td>
+            </tr>
+            <tr>
+                <td>Allows a user to remove a movie from their list of favorites.</td>
+                <td>/user/:id/:movieTitle</td>
+                <td>DELETE</td>
+                <td>:id, :movieTitle</td>
+                <td>None</td>
+                <td>Text confirmation that the movie has been removed from their list of favorites.</td>
+            </tr>
+            <tr>
+                <td>Allows a user to delete their account.</td>
+                <td>/users/:id</td>
+                <td>DELETE</td>
+                <td>:id</td>
+                <td>None</td>
+                <td>Text confirmation that the account has been deleted.</td>
+            </tr>
+            <tr>
+                <td>Returns a list of all movies.</td>
+                <td>/movies</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>None</td>
+                <td>A JSON object of all movies.</td>
+            </tr>
+            <tr>
+                <td>Returns data about one movie.</td>
+                <td>/movies/:title</td>
+                <td>GET</td>
+                <td>:title</td>
+                <td>None</td>
+                <td>A JSON object of one movie.</td>
+            </tr>
+            <tr>
+                <td>Returns data about a genre.</td>
+                <td>/movies/:genre</td>
+                <td>GET</td>
+                <td>:genre</td>
+                <td>None</td>
+                <td>A JSON object of the genre with the description.</td>
+            </tr>
+            <tr>
+                <td>Returns data about a director by name.</td>
+                <td>/movies/directors/:directorName</td>
+                <td>GET</td>
+                <td>:directorName</td>
+                <td>None</td>
+                <td>A JSON object of a director.</td>
+            </tr>
+        </tbody>
+    </table>
 </html>
