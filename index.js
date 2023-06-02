@@ -7,10 +7,10 @@ const express = require('express'),
   mongoose = require('mongoose'), // import mongoose
   Models = require('./models.js'); //imports models from models.js
 
-  const Movies = Models.Movie;
-  const Users = Models.User
+const Movies = Models.Movie;
+const Users = Models.User
 
-  mongoose.connect('mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
 // create a write stream (in append mode)
@@ -22,6 +22,11 @@ app.use(morgan('combined', {stream: accessLogStream}));
 // set up body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+let auth = require('./auth')(app); // app argument ensures Express is available in auth.js file
+
+const passport = require('passport');
+require('./passport');
 
 // CREATE add a user
 app.post('/users', (req, res) => {
@@ -152,7 +157,7 @@ app.get('/users/:Username', (req, res) => {
 });
 
 // READ Get all movies
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.find()
   .then((movies) => {
     res.status(201).json(movies);
