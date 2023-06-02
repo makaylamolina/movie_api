@@ -160,3 +160,4 @@
 ::1 - - [02/Jun/2023:19:28:30 +0000] "DELETE /users/testuser HTTP/1.1" 200 21 "-" "PostmanRuntime/7.32.2"
 ::1 - - [02/Jun/2023:19:28:36 +0000] "POST /users/ HTTP/1.1" 201 132 "-" "PostmanRuntime/7.32.2"
 ::1 - - [02/Jun/2023:19:28:41 +0000] "POST /login?Username=testuser&Password=salamander HTTP/1.1" 400 37 "-" "PostmanRuntime/7.32.2"
+::1 - - [02/Jun/2023:19:33:08 +0000] "POST /login?Username=testuser&Password=salamander HTTP/1.1" 400 36 "-" "PostmanRuntime/7.32.2"
