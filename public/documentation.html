@@ -29,34 +29,50 @@
                 <td>A JSON object of the new user added, structured like: "Username": "", "id": "", "favoriteMovie": ""</td>
             </tr>
             <tr>
+                <td>Returns a list of all users.</td>
+                <td>/users</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>None</td>
+                <td>A JSON object of each user.</td>
+            </tr>
+            <tr>
+                <td>Gets information on one user.</td>
+                <td>/users/:Username</td>
+                <td>GET</td>
+                <td>:Username</td>
+                <td>None</td>
+                <td>A JSON object of that user.</td>
+            </tr>
+            <tr>
                 <td>Allows a user to change their username</td>
-                <td>/users/:id</td>
+                <td>/users/:Username</td>
                 <td>PUT</td>
-                <td>:id</td>
+                <td>:Username</td>
                 <td>None</td>
                 <td>A JSON object of the user.</td>
             </tr>
             <tr>
                 <td>Allows a user to add a movie to their list of favorites.</td>
-                <td>/users/:id/:movieTitle</td>
+                <td>/users/:Username/movies/:MovieID</td>
                 <td>POST</td>
-                <td>:id, :movieTitle</td>
+                <td>:Username, movies, :MovieID</td>
                 <td>None</td>
                 <td>Text confirmation that the movie has been added to their list of favorites.</td>
             </tr>
             <tr>
                 <td>Allows a user to remove a movie from their list of favorites.</td>
-                <td>/user/:id/:movieTitle</td>
+                <td>/user/:Username/movies/:MovieID"</td>
                 <td>DELETE</td>
-                <td>:id, :movieTitle</td>
+                <td>:Username, movies, :MovieID</td>
                 <td>None</td>
                 <td>Text confirmation that the movie has been removed from their list of favorites.</td>
             </tr>
             <tr>
                 <td>Allows a user to delete their account.</td>
-                <td>/users/:id</td>
+                <td>/users/:Username</td>
                 <td>DELETE</td>
-                <td>:id</td>
+                <td>:Username</td>
                 <td>None</td>
                 <td>Text confirmation that the account has been deleted.</td>
             </tr>
@@ -70,27 +86,27 @@
             </tr>
             <tr>
                 <td>Returns data about one movie.</td>
-                <td>/movies/:title</td>
+                <td>/movies/:Title</td>
                 <td>GET</td>
                 <td>:title</td>
                 <td>None</td>
                 <td>A JSON object of one movie.</td>
             </tr>
             <tr>
-                <td>Returns data about a genre.</td>
+                <td>Returns movies in one genre.</td>
                 <td>/movies/:genre</td>
                 <td>GET</td>
                 <td>:genre</td>
                 <td>None</td>
-                <td>A JSON object of the genre with the description.</td>
+                <td>A JSON object of the movies in that genre.</td>
             </tr>
             <tr>
-                <td>Returns data about a director by name.</td>
+                <td>Returns movies by one director.</td>
                 <td>/movies/directors/:directorName</td>
                 <td>GET</td>
                 <td>:directorName</td>
                 <td>None</td>
-                <td>A JSON object of a director.</td>
+                <td>A JSON object of movies by one director.</td>
             </tr>
         </tbody>
     </table>
