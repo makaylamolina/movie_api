@@ -5,7 +5,8 @@ const express = require('express'),
   bodyParser = require('body-parser'), // import body-parser
   uuid = require('uuid'), // import uuid
   mongoose = require('mongoose'), // import mongoose
-  Models = require('./models.js'); //imports models from models.js
+  Models = require('./models.js'), //imports models from models.js
+  cors = require('cors');
 
 const Movies = Models.Movie;
 const Users = Models.User
@@ -13,6 +14,21 @@ const Users = Models.User
 mongoose.connect('mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
+
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){ // if a specific origin isn't found on the list of allowed origins
+    
+    let message = 'The CORS policy for this application doesn\'t allow access from origin ' + origin;
+    return callback(new Error(message ), false);
+}
+return callback(null, true);
+  }
+}));
+
 // create a write stream (in append mode)
 // a ‘log.txt’ file is created in root directory
 const accessLogStream = fs.createWriteStream(path.join('log.txt'), {flags: 'a'})
